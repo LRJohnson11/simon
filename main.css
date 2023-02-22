@@ -2,63 +2,63 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 375px;
-}
-
-header {
+  }
+  
+  header {
     flex: 0 80px;
-}
-
-main{
+  }
+  
+  main {
     flex: 1 calc(100vh - 110px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-}
-
-footer{
+  }
+  
+  footer {
     flex: 0 30px;
-}
-
-menu {
+  }
+  
+  menu {
     flex: 1;
     display: flex;
-
-    flex-direction:row !important; /*what is important?*/
+    /*  overwrite Bootstrap so the menu does not wrap */
+    flex-direction: row !important;
     list-style: none;
-}
-
-.navbar-brand {
-    padding-left: 0.3 em;
-    border-bottom: solid rgb(182,182,182) thin;
-}
-
-menu.nav-item {
+  }
+  
+  .navbar-brand {
+    padding-left: 0.3em;
+    border-bottom: solid rgb(182, 182, 182) thin;
+  }
+  
+  menu .nav-item {
     padding: 0 0.3em;
-}
-
-footer a {
+  }
+  
+  footer a {
     float: right;
-}
-
-#count {
-    color: rgb(246,239,158)
-}
-
-.players {
+  }
+  
+  #count {
+    color: rgb(246, 239, 158);
+  }
+  
+  .players {
     flex: 1;
     width: 100%;
-    padding:0.5em;
-}
-
-.player-name {
-    color: rgb(118,190,210);
-}
-
-.game {
-    background: rgb(0,0,0);
+    padding: 0.5em;
+  }
+  
+  .player-name {
+    color: rgb(118, 190, 210);
+  }
+  
+  .game {
+    background: rgb(0, 0, 0);
     border-radius: 50%;
-    box-shadow: 0 0 20px 5px rgb(69,69,69);
+    box-shadow: 0 0 20px 5px rgb(69, 69, 69);
     width: 80vw;
     height: 80vw;
     position: absolute;
@@ -66,17 +66,17 @@ footer a {
     min-height: 350px;
     max-width: min(80vmin, 1000px);
     max-height: min(80vmin, 1000px);
-}
-
-.button-container {
+  }
+  
+  .button-container {
     width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-}
-
-.button-top-left {
+  }
+  
+  .button-top-left {
     border-radius: 100% 0 0 0;
     margin: 20px 0 0 20px;
     background-color: green;
