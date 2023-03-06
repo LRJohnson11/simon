@@ -62,7 +62,14 @@ class Game {
     }
 
     async reset() {
-        //reset
+        this.allowPlayer = false;
+        this.playerPlaybackPos = 0;
+        this.sequence = [];
+        this.updateScore('--');
+        await this.buttonDance(1);
+        this.addButton();
+        await this.playSequence();
+        this.allowPlayer = true;
     }
     getPlayerName() {
         return localStorage.getItem('userName') ?? 'Some guy named \'Jeff\''; //this passes name input  into other page
@@ -71,4 +78,43 @@ class Game {
     async playSequence() {
 
     }
+    addButton() {
+        const btn = this.getRandomButton();
+        this.sequence.push(btn);
+        //add to sequence
+    }
+
+    updateScore(score) {
+        //score stuff
+    }
+    async buttonDance(laps = 1) {
+        //button dance thing??
+    }
+
+    getRandomButton() {
+        //get random
+    }
+
+    saveScore(score) {
+        //save score
+    }
+
+    updateScores(userName, scoer, scores) {
+        //update scoreboard
+    }
+
+}
+
+const game = new Game();
+
+function delay(milliseconds) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(true);
+        }, milliseconds);
+    });
+}
+
+function loadsound(filename) {//returns audio to the constructor
+    return new Audio('assets/' + filename);
 }
