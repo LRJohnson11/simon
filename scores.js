@@ -40,4 +40,35 @@ class Game {
     playerPlaybackPos;
     mistakesound;
 
+    constructor() { // creates game entity
+        this.buttons = new Map();
+        this.allowPlayer = false;
+        this.sequence = [];
+        this.playerPlaybackPos = 0;
+        this.mistakesound = loadSound('error.mpw');
+
+    document.querySelectorAll('.game-button').forEach((el, i) => {
+        if (i < btnDescriptions.length) {
+            this.buttons.set(el.id, new Button(btnDescriptions[i], el));
+            }
+        });
+
+    const playerNameEl = document.querySelector('.player-name');
+    playerNameEl.textcontent = this.getPlayerName();
+    }
+
+    async pressButton(button) {
+        //pressButton
+    }
+
+    async reset() {
+        //reset
+    }
+    getPlayerName() {
+        return localStorage.getItem('userName') ?? 'Some guy named \'Jeff\''; //this passes name input  into other page
+    }
+
+    async playSequence() {
+
+    }
 }
