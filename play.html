@@ -2,14 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Tell browsers not to scale the viewport automatically -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simon</title>
     <link rel="icon" href="favicon.ico" />
-    <script src="play.js"></script>
+
     <link rel="stylesheet" href="main.css" />
 
-    <!-- Include bootstrap CSS framework -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -41,14 +39,16 @@
     <main class="bg-secondary">
       <div class="players">
         Player:
-        <span class="player-name">Mystery player</span>
+        <span class="player-name"></span>
       </div>
       <div class="game">
         <div class="button-container">
-          <button class="game-button button-top-left"></button>
-          <button class="game-button button-top-right"></button>
-          <button class="game-button button-bottom-left"></button>
-          <button class="game-button button-bottom-right"></button>
+
+
+          <button id="green" class="game-button button-top-left" onclick="game.pressButton(this)"></button>
+          <button id="red" class="game-button button-top-right" onclick="game.pressButton(this)"></button>
+          <button id="yellow" class="game-button button-bottom-left" onclick="game.pressButton(this)"></button>
+          <button id="blue" class="game-button button-bottom-right" onclick="game.pressButton(this)"></button>
           <div class="controls center">
             <div class="game-name">Simon<sup>&reg;</sup></div>
             <div class="score center">--</div>
@@ -68,5 +68,7 @@
         >
       </div>
     </footer>
+
+    <script src="playing.js"></script>
   </body>
 </html>
