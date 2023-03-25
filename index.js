@@ -15,7 +15,8 @@ const apiRouter = express.Router();//define the api and where to rout it
 app.use(`/api`, apiRouter);//defines the path to get stuff from the api
 
 // GetScores
-apiRouter.get('/scores', (_req, res) => {
+apiRouter.get('/scores', async (_req, res) => {// GO GET THEM DATA!!!!
+  const scores = await Db.getHighScores(); //HERE YOU GO!!!!
   res.send(scores); //at start, collects data for the api
 });
 
