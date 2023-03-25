@@ -1,5 +1,6 @@
 const express = require('express');//sets requirements for file
 const app = express();//makes app the shortcut to calling things in express
+const DB = require('./database.js');
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;//defines a port for the middleware to listen on
@@ -16,13 +17,14 @@ app.use(`/api`, apiRouter);//defines the path to get stuff from the api
 
 // GetScores
 apiRouter.get('/scores', async (_req, res) => {// GO GET THEM DATA!!!!
-  const scores = await Db.getHighScores(); //HERE YOU GO!!!!
+  const scores = await DB.getHighScores(); //HERE YOU GO!!!!
   res.send(scores); //at start, collects data for the api
 });
 
 // SubmitScore
-apiRouter.post('/score', (req, res) => {
-  scores = updateScores(req.body, scores);
+apiRouter.post('/score', async (req, res) => {
+  DB.addScore(req.body);
+  const scores = await DB.getHighScores();
   res.send(scores);
 });
 

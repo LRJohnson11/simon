@@ -126,19 +126,41 @@ class Game {
     return buttons[Math.floor(Math.random() * this.buttons.size)];
   }
 
-  saveScore(score) {
-    const userName = this.getPlayerName();
-    let scores = [];
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      scores = JSON.parse(scoresText);
-    }
-    scores = this.updateScores(userName, score, scores);
+  // saveScore(score) {
+  //   const userName = this.getPlayerName();
+  //   let scores = [];
+  //   const scoresText = localStorage.getItem('scores');
+  //   if (scoresText) {
+  //     scores = JSON.parse(scoresText);
+  //   }
+  //   scores = this.updateScores(userName, score, scores);
 
-    localStorage.setItem('scores', JSON.stringify(scores));
+  //   localStorage.setItem('scores', JSON.stringify(scores));
+  // }
+  async saveScore(score) {//updated for databases
+    const userName = this.getPlayerName();
+    const date = new Date().toLocaleDateString();
+    const newScore = { name: userName, score: score, date: date };
+
+    try {
+      const response = await fetch('/api/score', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(newScore),
+      });
+
+      // Store what the service gave us as the high scores
+      const scores = await response.json();
+      localStorage.setItem('scores', JSON.stringify(scores));
+    } catch {
+      // If there was an error then just track scores locally
+      this.updateScoresLocal(newScore);
+    }
   }
 
-  updateScores(userName, score, scores) {
+
+
+  updateScoresLocal(userName, score, scores) {
     const date = new Date().toLocaleDateString();
     const newScore = { name: userName, score: score, date: date };
 
